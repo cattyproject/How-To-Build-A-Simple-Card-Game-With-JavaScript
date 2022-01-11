@@ -1,4 +1,4 @@
-const SUITS=["♠","♣","♥","♦"]
+const SUITS=["♠", "♣", "♥", "♦"]
 const VALUES =["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
 
 export default class Deck {
@@ -9,9 +9,12 @@ export default class Deck {
     get numberOfCards(){
         return this.cards.length
     }
-    shuffle (){
-        for( let i = this.numberOfCards.length -1; i>0; i--){
-            const newIndex = Math.floor(Math.random *(i+1))
+    shuffle(){
+        for( let i = this.numberOfCards - 1; i>0; i--){
+            const newIndex = Math.floor(Math.random()*(i+1))
+            const oldValue = this.cards[newIndex]
+            this.cards[newIndex]=this.cards[i]
+            this.cards[i]=oldValue
         }
     }
 }
